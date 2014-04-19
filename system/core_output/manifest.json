@@ -1,0 +1,16 @@
+{
+    "name" : "core_output",
+    "description" : "Output parameters",
+    "package" : {
+        "path" : "/core/",
+        "init" : "output.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "output"
+    },
+    "depends" : [
+
+    ]
+}

@@ -5,13 +5,15 @@
  * Created by Alex Gavrilov.
  */
 
-const DEV__DEBUG = false;
+const DEBUG = true  ;
 
 const APP__ROOT = __DIR__;
 
 // dev | prod
 $GLOBALS['APP_ENV'] = 'dev';
 
+$GLOBALS['PACKAGES_TYPE'] = 'src';
+
 $GLOBALS['PACKAGES_PATH'] = [
-    APP__ROOT . '/pkg_russianPost',
+    APP__ROOT . '/system',
 ];

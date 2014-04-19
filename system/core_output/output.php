@@ -3,7 +3,7 @@
  * Created by Alex Gavrilov.
  */
 
-namespace system\io;
+namespace system\core;
 
 class Output
 {

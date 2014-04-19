@@ -1,0 +1,16 @@
+{
+    "name" : "core_input",
+    "description" : "Input parameters",
+    "package" : {
+        "path" : "/core/",
+        "init" : "input.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

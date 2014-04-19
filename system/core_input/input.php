@@ -3,10 +3,11 @@
  * Created by Alex Gavrilov.
  */
 
-namespace system\io;
+namespace core;
 
-class Input
+class input
 {
+    private static $INTERNAL;
 
     /**
      * Construct new input object
@@ -16,9 +17,18 @@ class Input
     public function __construct()
     {
         if(isset($GLOBALS['argv'])) {
-            var_dump($GLOBALS['argv']);
             $this->setArguments($this->importArgs($GLOBALS['argv']));
         }
+    }
+
+    /**
+     * Export parsed data as array
+     *
+     * @return array
+     */
+    public function export()
+    {
+        return self::$INTERNAL;
     }
 
     /**
@@ -31,7 +41,7 @@ class Input
 // argv:
 //[
 //  [0] => "/opt/src/clientBase/system/index.php",
-//  [1] => "/opt/src/clientBase/",
+//  [1] => "/opt/src/clientBase/name",
 //]
 
     public function importArgs($argv){
@@ -68,6 +78,23 @@ class Input
             }
         }
         return $out;
+    }
+
+    /**
+     * Set arguments to internal parsed data
+     *
+     * @param array $array
+     * @param bool $clean Clear already exists data
+     * @return bool
+     */
+    public function setArguments($array, $clean = true)
+    {
+        if($clean) {
+            self::$INTERNAL = $array;
+        } else {
+            self::$INTERNAL = array_merge_recursive(self::$INTERNAL, $array);
+        }
+        return true;
     }
 
 
