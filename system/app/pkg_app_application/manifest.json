@@ -1,0 +1,16 @@
+{
+    "name" : "pkg_app_application",
+    "description" : "Main application class",
+    "package" : {
+        "path" : "/pkg/app/",
+        "init" : "application.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "app",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

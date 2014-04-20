@@ -28,40 +28,50 @@ if (!isset($GLOBALS['PACKAGES_PATH']) || !is_array($GLOBALS['PACKAGES_PATH'])) {
     exit(1);
 }
 
-spl_autoload_register(function ($packageName) {
-    if (strpos($packageName, '\\') === 0) {
-        $packageName = mb_substr($packageName, 1);
+spl_autoload_register(function ($package_name) {
+
+    var_dump("start package name is {$package_name}");
+    if (strpos($package_name, '\\') === 0) {
+        $package_name = mb_substr($package_name, 1);
     }
 
-    $packageName = str_replace("\\", "_", $packageName);
+    $package_name = str_replace("\\", "_", $package_name);
 
+    static $server_uniq;
+    if (!isset($server_uniq)) {
+        $server_uniq = crc32(__DIR__);
+    }
 
     switch (strtolower($GLOBALS['PACKAGES_TYPE'])) {
+        case "phar":
+            $packageArray = explode("_", $package_name);
+            array_pop($packageArray);
+            $packagePath = APP__ROOT . "/" . implode("/", $packageArray) . "/{$package_name}.phar";
+            break;
         case "src":
         default:
             $packagePath = APP__ROOT;
             foreach ($GLOBALS['PACKAGES_PATH'] as $dev_packages_path) {
-                $packagePath = $dev_packages_path . "/" . $packageName;
-                $manifestFile = "{$packagePath}/manifest.json";
+                var_dump("dev package path is: ", $dev_packages_path);
+                var_dump("package name is {$package_name}\n\n");
+                $packagePath = $dev_packages_path . "/" . $package_name;
+                $manifest_file = "{$packagePath}/manifest.json";
                 if(class_exists('\mpr\debug\log', false)) {
-                    DEBUG && \core\log::put("Searching {$manifestFile}", "init");
+                    DEBUG && \sys\debug\log::put("Searching {$manifest_file}", "init");
                 }
-                if (file_exists($manifestFile)) {
-                    $initFile = json_decode(file_get_contents($manifestFile), 1)['package']['init'];
+                if (file_exists($manifest_file)) {
+                    $initFile = json_decode(file_get_contents($manifest_file), 1)['package']['init'];
                     $packagePath .= "/{$initFile}";
                     break;
                 }
             }
-            $packagePath =  __DIR__ .'/' . $packageName .'/' . substr($packageName, strrpos($packageName, '_') + 1) . '.php';
     }
-
-
-    echo $packagePath;
     if (file_exists($packagePath)) {
         require_once $packagePath;
     } else {
-        print_r("ERROR LOADING {$packageName}" .     "init");
+        \sys\debug\log::put("ERROR LOADING {$package_name}", "init");
     }
 });
+require_once '/opt/src/clientBase/system/packages/system_lib_curl/curl.php';
 
 

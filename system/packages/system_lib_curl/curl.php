@@ -1,6 +1,6 @@
 <?php
 
-namespace mpr\net;
+namespace system\lib;
 
 /**
  * Curl wrapper
@@ -9,20 +9,10 @@ namespace mpr\net;
  */
 class curl
 {
-    /**
-     * initialized curl resource
-     *
-     * @var resource
-     */
     private $curl;
 
     private $onErrors = [];
 
-    /**
-     * Default options array
-     *
-     * @var array
-     */
     private $_defaultoptions = array(
         CURLOPT_VERBOSE             => 0,
         CURLOPT_RETURNTRANSFER      => true,
@@ -227,7 +217,7 @@ class curl
             } else {
                 curl_close($this->curl);
                 $this->curl = null;
-                throw new curlException($curl_error, $curl_errno);
+                //throw new \Exception($curl_error, $curl_errno);
             }
         }
 

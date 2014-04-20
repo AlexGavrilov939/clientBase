@@ -1,0 +1,16 @@
+{
+    "name" : "sys_loader_fileLoader",
+    "description" : "Main file loader",
+    "package" : {
+        "path" : "/sys/loader/",
+        "init" : "fileLoader.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "file, loader"
+    },
+    "depends" : [
+
+    ]
+}

@@ -1,9 +1,9 @@
 {
-    "name" : "core_fileLoader",
-    "description" : "system file loader",
+    "name" : "sys_io_output",
+    "description" : "Output parameters class",
     "package" : {
-        "path" : "/core/",
-        "init" : "fileLoader.php",
+        "path" : "/sys/io/",
+        "init" : "output.php",
         "version" : "0.1a"
     },
     "meta" : {

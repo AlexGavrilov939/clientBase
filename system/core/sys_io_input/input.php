@@ -3,7 +3,7 @@
  * Created by Alex Gavrilov.
  */
 
-namespace core;
+namespace sys\io;
 
 class input
 {

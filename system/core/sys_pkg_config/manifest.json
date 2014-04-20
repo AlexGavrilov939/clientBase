@@ -1,0 +1,16 @@
+{
+    "name" : "sys_pkg_config",
+    "description" : "Class for working with package configs",
+    "package" : {
+        "path" : "/sys/pkg/",
+        "init" : "config.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

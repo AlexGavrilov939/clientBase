@@ -1,9 +1,9 @@
 {
-    "name" : "core_input",
-    "description" : "Input parameters",
+    "name" : "sys_debug_log",
+    "description" : "Debug logger",
     "package" : {
-        "path" : "/core/",
-        "init" : "input.php",
+        "path" : "/sys/debug/",
+        "init" : "log.php",
         "version" : "0.1a"
     },
     "meta" : {

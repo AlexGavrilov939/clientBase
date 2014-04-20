@@ -3,7 +3,9 @@
  * Created by Alex Gavrilov.
  */
 
-namespace core;
+namespace sys\loader;
+
+use sys\debug\log;
 
 class fileLoader {
 

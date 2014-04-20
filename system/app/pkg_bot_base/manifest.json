@@ -1,0 +1,16 @@
+{
+    "name" : "pkg_bot_base",
+    "description" : "Base bot application",
+    "package" : {
+        "path" : "/pkg/bot/",
+        "init" : "base.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "app",
+        "tags" : "bot, base"
+    },
+    "depends" : [
+
+    ]
+}
