@@ -16,7 +16,8 @@ class russianPost
 {
     const HOST  = 'https://gdetoedet.ru/track/';
 
-    private $trackNumber = 12513072125878;
+    private $trackNumberTest = 12513072120811;
+    private $trackNumber = 12513072083796;
 
     public function prepare()
     {
@@ -28,12 +29,18 @@ class russianPost
         log::put("initialize curl");
         $curl = new curl();
         $curl->reset();
+        $curl->addOptions([
+            CURLOPT_VERBOSE => false,
+        ]);
         $curl->prepare(self::HOST . $this->trackNumber);
         log::put("prepare to make execute");
         $content = $curl->execute();
+        //$content = mb_convert_encoding($content, "UTF-16");
+        //print_r($content);
         $regex = <<<EX
-/class="b-d_track-name">[\s\S]+<span>(?<track_number>\d+)\s+<\/div>[\s\S]+class="b-dinfo__type-parcel[\s\S]+<h2>(?<pkg_type>.*?)<\/h2>(?<pkg_class>[\s\S]+)<\/div>[\s\S]+class="b-status[\s\S]+data-content="(?<start_address>[\s\S]+)">(?<start_index>\d+)</ui
+/class="b-departure">[\s\S]+<div\sclass="b-status__lu-date"[^>]+>[\s\S]+:\s(?<last__check_date>[\s\S]+)<\/div>[\s\S]+<div\sclass="b-status__lu-time"[^>]+>(?<last__check_time>[^<]+)<\/div>[\s\S]+<span>(?<track__number>[^\n]+)\n[\s\S]+class="b-dinfo">[\s\S]+<h2>(?<pkg__type>[\s\S]+)<\/h2>\n(?<pkg__info>[\s\S]+)\n\s+<\/div>[\s\S]+data-content="(?<from__address>[\s\S]+)">(?<from__index>\d+)<\/span>[\s\S]+class="b-status__move-to-map\smap-move-to"[^>]+>(?<to__index>[^<]+)<\/span><\/h2>\n(?<to__address>[\s\S]+)<div class="b-dinfo__weight">[\s\S]+<span>(?<pkg__weight>[^<]+)<\/span>[\s\S]+class="b-status__header">[\s\S]+<\/span>(?<pkg__status>[^<]+)<\/h1>/Uui
 EX;
+
         preg_match($regex, $content, $matches);
         $data = [];
         foreach($matches as $key => $value) {
@@ -48,7 +55,7 @@ EX;
 
     private function clearContent($content)
     {
-        return trim(strip_tags($content));
+        return trim(preg_replace('/\s{2,}/', ' ', strip_tags($content)));
     }
 
     private function getCurl()
