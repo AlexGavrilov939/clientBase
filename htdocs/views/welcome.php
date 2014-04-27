@@ -74,26 +74,29 @@
 <div id="main" class="container-fluid">
     <div class="row">
         <div id="sidebar-left" class="col-xs-2 col-sm-2">
-            <ul class="nav main-menu">
+            <ul class="nav main-menu" id="navigation">
 
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">
                         <i class="fa fa-table"></i>
-                        <span class="hidden-xs">Tables</span>
+                        <span class="hidden-xs">Таблица клиентов</span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="ajax-link" href="ajax/tables_simple.html">Simple Tables</a></li>
-                        <li><a class="ajax-link" href="ajax/tables_datatables.html">Data Tables</a></li>
-                        <li><a class="ajax-link" href="ajax/tables_beauty.html">Beauty Tables</a></li>
-                    </ul>
                 </li>
 
             </ul>
         </div>
         <!--Start Content-->
         <div id="content" class="col-xs-12 col-sm-10">
-            
+            <div id="table-control" class="col-xs-12">Управление таблицей</div>
+            <?=($data['mongo']['name']);?>
+            <?=($data['mongo']['phone']);?>
+            <table id="orders-table" style="border:1px solid black;" class="table table-responsive table-hover">
+                <tr>
+                    <td>das</td>
+                    <td>asd</td>
+                </tr>
+            </table>
             <div id="ajax-content"></div>
         </div>
         <!--End Content-->

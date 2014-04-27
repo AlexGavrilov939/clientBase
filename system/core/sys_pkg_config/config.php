@@ -5,38 +5,50 @@
 
 namespace sys\pkg;
 
+use sys\loader\fileLoader;
+
 abstract class config
 {
-    public static $configSection;
-    public static $package;
+
+    public static $package = [];
 
     public static function getPackageConfig($class)
     {
-        $configPath = self::setConfigSection() . self::getConfigFile($class);
-        if(file_exists($configPath)){
-            echo "вот содержимое файла:";
-            $config = self::init($configPath);
-            var_dump($config);
+        $configSection = self::getPackageName($class);
+        fileLoader::load(self::getConfigPath($configSection));
+        return self::$package[$configSection];
+    }
 
-        } else {
-            echo "ищем тут $configPath\n";
-            echo 'конфиг файла НЕТ!!!читай доки еп!';
+    public static function getPackageName($class)
+    {
+        if(mb_strpos($class, '\\') === 0) {
+            $class = mb_substr($class, 1);
         }
+        return str_replace('\\', '_', $class);
     }
 
-    private static function init($packagePath)
+    protected static function init($config)
     {
-        return include $packagePath;
+        var_dump("init!");
+        if(self::searchConfig($config)) {
+            $configPath =self::getPackageConfig($config);
+            var_dump($configPath);
+            require_once $configPath;
+            echo 'true';
+        }
+        echo 'false';
     }
 
-
-    private static function setConfigSection()
+    protected static function searchConfig($config)
     {
-        return self::$configSection = APP__ROOT . '/configs/';
+        if(file_exists(self::getPackageConfig($config))) {
+            return true;
+        }
+        return false;
     }
 
-    private static function getConfigFile($class)
+    protected static function getConfigPath($config)
     {
-        return $class . '.php';
+        return APP__ROOT . '/configs/' . $config . '.php';
     }
 }

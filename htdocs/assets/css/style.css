@@ -18,6 +18,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 #logo {
     position:relative;
     background: #525252 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+    text-align: center;
 }
 #logo a {
     color: #fff;
@@ -67,7 +68,7 @@ a.show-sidebar:hover {
     z-index: inherit;
     padding-bottom: 3000px !important;
     margin-bottom: -3000px !important;
-    background: #6AA6D6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+    background: #6AA6D6 url(../img/navigation.png) 0 0 repeat;
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -o-transition: 0.2s;
@@ -85,6 +86,7 @@ a.show-sidebar:hover {
     -moz-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
+    margin-left: 16.6667%;
 }
 .full-content {
     overflow: hidden;
@@ -2263,6 +2265,8 @@ td.beauty-hover {
         opacity: 1;
         width: 16.666666666666664%;
         padding: 0 15px;
+        position: fixed;
+        z-index: 9999;
     }
     .sidebar-show #sidebar-left.col-sm-2 {
         opacity: 0;
@@ -2279,7 +2283,12 @@ td.beauty-hover {
 }
 @media (min-width: 992px) {
     .nav.main-menu > li > a, .nav.msg-menu > li > a {
-        text-align: left;
+        text-align: center;
+        font-weight: bold;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 6px;
+        border: 1px solid #CEA9A9;
     }
     .nav.main-menu > li > a > i, .nav.msg-menu > li > a > i {
         font-size:14px;
@@ -2357,4 +2366,17 @@ td.beauty-hover {
     #dashboard_links .nav-pills > li.active > a:before {
         display: none;
     }
+}
+
+#add-button {
+    margin-top: 40px;
+}
+#orders-table {
+    margin: 0 auto;
+}
+#table-control {
+    margin-top: 60px;
+}
+#navigation {
+    margin-top: 60px;
 }

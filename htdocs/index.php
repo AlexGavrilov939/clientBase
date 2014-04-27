@@ -7,7 +7,7 @@ $APP_PATH = dirname(__DIR__);
 
 const WEB_PATH = __DIR__;
 const ENV = 'cli';
-const DEBUG = false;
+//const DEBUG = false;
 
 header('Content-Type: text/html; charset=UTF-8');
 

@@ -15,13 +15,13 @@ class fileLoader {
         if($filepath == null) {
             throw new \Exception("Unable to load file {$file} in {$filepath}!");
         }
-        log::put("Loading: {$filepath}");
+        DEBUG && log::put("Loading: {$filepath}");
         return require_once $filepath;
     }
 
     public static function search($file)
     {
-        log::put("Searching file: {$file}");
+        DEBUG && log::put("Searching file: {$file}");
         return file_exists($file) ? $file : null;
     }
 }

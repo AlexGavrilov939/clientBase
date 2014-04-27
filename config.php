@@ -5,7 +5,7 @@
  * Created by Alex Gavrilov.
  */
 
-const DEBUG = true;
+const DEBUG = false;
 
 const APP__ROOT = __DIR__;
 

@@ -1,6 +1,7 @@
 <?php
 namespace system\lib;
 use sys\debug\log;
+use sys\pkg\config;
 
 
 /**
@@ -31,7 +32,7 @@ class mongoDb
      * @param string $configName `default` - is default value
      * @return self
      */
-    public static function factory($configName = 'default')
+    public static function factory($configName = 'defaultLocal')
     {
         static $instances = [];
         if(!isset($instances[$configName])) {
@@ -43,7 +44,7 @@ class mongoDb
     /**
      * Construct new object
      */
-    public function __construct($configName = 'default')
+    public function __construct($configName)
     {
         $packageConfig = config::getPackageConfig(__CLASS__);
         if(!isset($packageConfig[$configName])) {

@@ -5,33 +5,34 @@
 
 namespace sys\web;
 
-use sys\debug\log;
+use sys\pkg\config;
 
 abstract class controller
 {
-    protected $test;
+    protected $baseClass;
+
 
     public function __construct()
     {
-        $this->test = 'Hello, i am base controller!';
-    }
-
-    public function writeLn()
-    {
-        return $this->test;
-    }
-
-    public function test()
-    {
-        log::put("test from: ", __METHOD__);
     }
 
     protected function parser()
     {
+        $this->baseClass = get_called_class();
         static $parser;
         if(!isset($parser)) {
             $parser = new parser();
         }
         return $parser;
+    }
+
+    public function getConfig()
+    {
+        static $config;
+        if (!isset($config)) {
+            $config = config::getPackageConfig($this->baseClass);
+        }
+        return $config;
+
     }
 }
