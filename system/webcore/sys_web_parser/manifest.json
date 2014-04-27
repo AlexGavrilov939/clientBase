@@ -1,0 +1,16 @@
+{
+    "name" : "sys_web_parser",
+    "description" : "template parser",
+    "package" : {
+        "path" : "/sys/web/",
+        "init" : "parser.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

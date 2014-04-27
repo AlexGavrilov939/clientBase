@@ -1,0 +1,16 @@
+{
+    "name" : "sys_web_router",
+    "description" : "web router",
+    "package" : {
+        "path" : "/sys/web/",
+        "init" : "router.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

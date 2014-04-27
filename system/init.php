@@ -7,13 +7,21 @@
 
 namespace system\core;
 
+use sys\debug\log;
+
+
 $initConfigFile = dirname(__DIR__) . '/config.php';
+$initLogFile = __DIR__ . '/core/sys_debug_log/log.php';
 
 if(!file_exists($initConfigFile)) {
     die('unable to load config file!');
 }
-
 require_once $initConfigFile;
+
+if(!file_exists($initLogFile)) {
+    print 'log class not found!';
+}
+require_once  $initLogFile;
 
 if (!defined('APP__ROOT')) {
     print "[ERROR] loading `APP_ROOT` from {$initConfigFile}!\n";
@@ -29,13 +37,14 @@ if (!isset($GLOBALS['PACKAGES_PATH']) || !is_array($GLOBALS['PACKAGES_PATH'])) {
 }
 
 spl_autoload_register(function ($package_name) {
-
-    var_dump("start package name is {$package_name}");
+    //sys\web\Router
+    DEBUG && log::put("start package name is {$package_name}");
     if (strpos($package_name, '\\') === 0) {
         $package_name = mb_substr($package_name, 1);
     }
 
     $package_name = str_replace("\\", "_", $package_name);
+
 
     static $server_uniq;
     if (!isset($server_uniq)) {
@@ -52,9 +61,10 @@ spl_autoload_register(function ($package_name) {
         default:
             $packagePath = APP__ROOT;
             foreach ($GLOBALS['PACKAGES_PATH'] as $dev_packages_path) {
-                var_dump("dev package path is: ", $dev_packages_path);
-                var_dump("package name is {$package_name}\n\n");
+                DEBUG && log::put( "dev package path is: {$dev_packages_path}");
+                DEBUG && log::put( "package name is {$package_name}\n");
                 $packagePath = $dev_packages_path . "/" . $package_name;
+                DEBUG && log::put( "package path is {$packagePath}\n\n");
                 $manifest_file = "{$packagePath}/manifest.json";
                 if(class_exists('\mpr\debug\log', false)) {
                     DEBUG && \sys\debug\log::put("Searching {$manifest_file}", "init");
@@ -69,7 +79,7 @@ spl_autoload_register(function ($package_name) {
     if (file_exists($packagePath)) {
         require_once $packagePath;
     } else {
-        \sys\debug\log::put("ERROR LOADING {$package_name}", "init");
+        log::put("ERROR LOADING {$package_name}", "init");
     }
 });
 require_once '/opt/src/clientBase/system/packages/system_lib_curl/curl.php';

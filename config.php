@@ -18,4 +18,5 @@ $GLOBALS['PACKAGES_PATH'] = [
     APP__ROOT . '/system/core',
     APP__ROOT . '/system/app',
     APP__ROOT . '/system/packages',
+    APP__ROOT . '/system/webcore',
 ];
