@@ -4,10 +4,10 @@
                 <h2 class="customer-title">Информация о клиенте</h2>
                 <div class="info-group">
                     <div class="info-item">
-                        <label for="fio">Фио: </label><input name="fio" id="fio" placeholder="дата заказа"/>
+                        <label for="fio">Фио: </label><input name="fio" id="fio" placeholder="Фамилия Имя Отчество"/>
                     </div>
                     <div class="info-item">
-                        <label for="phone">Телефон: </label><input name="phone" id="phone" placeholder="дата заказа"/>
+                        <label for="phone">Телефон: </label><input name="phone" id="phone" placeholder="Телефон с кодом города"/>
                     </div>
                 </div>
                 <div class="info-group">
@@ -46,7 +46,9 @@
                     <input id="track-number-area" name="track-number" placeholder="Введите почтовый номер">
                 </div>
                 <div class="shipment">
-                    <div class="shipment-item">
+                    <div class="shipment-item-deactivated">
+                        <div title="Удалить карточку" class="delete-item">&#10006;</div>
+
                         <div class="media">
                             <div class="image-view"></div>
                             <button id="add-image">Добавить изображение</button>
@@ -66,7 +68,8 @@
                             </div>
                         </div>
                         <div class="desc">
-                            Комментарии
+                            <label for="item-description-area">Оставить комментарий:</label>
+                            <textarea class="item-description-area" name="item-description-area"></textarea>
                         </div>
                     </div>
                     <span id="add-shipment-item">Добавить наименование</span>
@@ -77,8 +80,8 @@
 </div>
 <div class="control-section-outer">
     <div class="control-section-inner">
-        <button class="form-control goto">Перейти к списку заказов</button>
-        <button class="form-control save">Сохранить и продолжить</button>
+        <button class="form-control" id="goto">Перейти к списку заказов</button>
+        <button class="form-control" id="save">Сохранить и продолжить</button>
     </div>
 </div>
 <script>
@@ -89,7 +92,24 @@
         });
 
         $("#add-shipment-item").click(function() {
-            console.log('test');
+            var cartDiv = $('.shipment-item-deactivated').clone();
+            cartDiv.toggleClass('shipment-item-deactivated shipment-item');
+            $(this).before(cartDiv);
         });
+        $("#save").click(function () {
+            var data = {
+                fio         : $('#fio').val(),
+                phone       : $('#phone').val(),
+                address     : $('#address-area').val(),
+                description : $('#description-area').val(),
+                trackNumber : $('#track-number-area').val(),
+                
+            };
+            console.log(data);
+        });
+    });
+
+    $(document).on('click', ".delete-item", function() {
+        $(this).parent().remove();
     });
 </script>
