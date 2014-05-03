@@ -1,0 +1,268 @@
+html,body{
+    background: url("../img/body.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.header {
+    border-top: 3px solid #97BD47;
+    background: url("../img/opacity.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 46px;
+    box-shadow: 0 1px 1px #606060;
+}
+    .header-control {
+        float: right;
+    }
+        .header-control li {
+            display: inline-block;
+        }
+
+.main-wrapper {
+    padding-top: 25px;
+    text-align: center;
+}
+    .content, .navigation {
+        display: inline-block;
+        *display: inline;
+        vertical-align: top;
+    }
+    .navigation {
+        padding: 0 6px;
+        box-shadow: 0 1px 1px #606060, 0 1px 1px #2A2A2A inset;
+        border-radius: 3px 3px 3px 3px;
+        width: 18%;
+        background: url("../img/opacity.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+        .navigation .item {
+            background: url("../img/overlay.png") repeat scroll 0 0%, linear-gradient(to bottom, #68B4DD 0%, #2F86B2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+            position: relative;
+            color: #fff;
+            font-family: PTSerifBold;
+            text-transform: lowercase;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 5px 0;
+            border-radius: 2px;
+        }
+            .navigation .item img {
+                position: absolute;
+                left: 15px;
+            }
+        .navigation .item:hover{
+            opacity: 0.9;
+        }
+        .item + .add-record {
+            background: url("../img/overlay.png") repeat scroll 0 0%, linear-gradient(to bottom, #504B71 0%, #453D5B 50%, #5A5B87 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+        }
+        .item + .excel {
+            background: url("../img/overlay.png") repeat scroll 0 0%, linear-gradient(to bottom, #24713c 0%, #1c711a 50%, #378747 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+    .content {
+        display: inline-block;
+        *display: inline;
+        width: 71%;
+        padding: 0 15px;
+    }
+
+.control-section-outer, .data-section-outer {
+    background: url("../img/opacity.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px #606060, 0 1px 1px #2A2A2A inset;
+    padding: 6px;
+    margin-bottom: 15px;
+}
+.control-section-inner {
+    background: url("../img/overlay.png") repeat scroll 0 0%, -moz-linear-gradient(center top , #EC795D 0%, #D1573A 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 1px #333333;
+    padding: 9px 35px 8px;
+}
+.data-section-inner {
+    background: url("../img/content.png");
+    border-radius: 1px;
+    padding: 6px;
+}
+.customer-info, .order-info {
+    padding: 15px 0;
+}
+    .customer-info input, .customer-info textarea, .order-info input, .order-info textarea{
+        text-align: center;
+        border: 1px solid #B9C4DA;
+        border-radius: 3px;
+        padding: 5px;
+        width: 220px;
+        margin: 6px 0 5px;
+        font-family: PTSerifRegular;
+        font-size: 14px;
+    }
+
+    .customer-info textarea {
+        resize: none;
+        height: 80px;
+    }
+
+.info-group {
+    display: inline-block;
+    *display: inline;
+    width: 49.5%;
+    vertical-align: top;
+    text-align: center;
+}
+.info-item {
+    width: 85%;
+    padding-right: 5%;
+    margin: 8px 0;
+    display: inline-block;
+    *display: inline;
+    position: relative;
+    text-align:right;
+    height: 40px;
+}
+    .info-item label {
+        font-family: PTSerifBold;
+        color: #36638E;
+        position: absolute;
+        left: 0;
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 40px;
+    }
+    .info-item label[for="address"] {
+        line-height: 90px;
+    }
+
+.description, .media-area {
+    display: inline-block;
+    *display: inline;
+    vertical-align: top;
+}
+.media-area {
+    width: 45%;
+}
+    .media-item {
+        display: inline-block;
+        *display: inline;
+        vertical-align: top;
+        width: 60%;
+        border-radius: 3px 3px 3px 3px;
+    }
+        .media-item .image {
+            width: 220px;
+            background: url("../img/no-image.png") center center;
+            box-shadow: 0 1px 1px #606060, 0 1px 1px #2A2A2A inset;
+            height: 220px;
+            margin: 0 auto;
+        }
+.description {
+    width: 45.5%;
+}
+    .description input {
+        width: 415px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .description textarea {
+        width: 395px;
+        height: 140px;
+        resize: none;
+        padding: 10px;
+    }
+
+.submit {
+    border-top: 1px dashed #606060;
+    margin-top: 15px;
+    padding-top: 10px;
+}
+.order-form {
+    padding: 15px 0;
+}
+.customer-title {
+    font-family: PTSerifRegular;
+    font-weight: bold;
+    border-bottom: 1px solid #B9C4DA;
+    width: 500px;
+    margin: 0 auto 15px;
+    padding-bottom: 7px;
+    color: #36638E;
+}
+
+.add-address, .add-description, .add-track-number{
+    position: relative;
+    width: 250px;
+    text-align: center;
+    margin: 0 auto;
+}
+.add-track-number {
+    width: 330px;
+    margin-left: 115px;
+}
+.add-address img , .add-description img, .add-track-number img{
+    height: 35px;
+    position: absolute;
+    left: 0;
+}
+.button{
+    width: 160px;
+    margin: 8px 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: PTSerifRegular;
+    font-size: 14px;
+    font-weight: bold;
+    color: #36638E;
+    padding: 0;
+    border-bottom: 2px dotted #B9C4DA;
+
+}
+button.track-number {
+    width: 250px;
+    text-align: right;
+}
+.add-address button:hover {
+    border-color: #36638E;
+}
+#address-area, #description-area {
+    display: none;
+    text-align: left;
+    font-family: PTSerifRegular;
+    color: #000;
+    font-size: 14px;
+    margin-top: 15px;
+    width: 350px;
+}
+#track-number-area {
+    padding: 3px;
+    margin: 15px 0 -5px -3px;
+    width: 300px;
+    float: left;
+    display: none;
+}
+button.form-control {
+    font-family: PTSerifBold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    margin: 0 10px;
+    border-radius: 5px;
+    padding: 6px;
+    border: 1px solid #D1573A;
+    border: 0;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 1);
+    -moz-box-shadow:    0px 0px 1px 1px rgba(50, 50, 50, 1);
+    box-shadow:         0px 0px 1px 1px rgba(50, 50, 50, 1);
+}
+button.form-control:hover {
+    /*opacity: 0.9;*/
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(50, 50, 50, 0.6);
+    -moz-box-shadow:    0px 0px 1px 1px rgba(50, 50, 50, 0.6);
+    box-shadow:         0px 0px 1px 1px rgba(50, 50, 50, 0.6);
+}
+button.save{
+    background: url("../img/overlay.png") #65a028;
+}
+button.goto {
+    background: url("../img/overlay.png") #4077aa;
+}

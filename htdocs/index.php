@@ -9,6 +9,7 @@ const WEB_PATH = __DIR__;
 const ENV = 'cli';
 //const DEBUG = false;
 
+
 header('Content-Type: text/html; charset=UTF-8');
 
 //require_once $APP_PATH . '/system/webcore/sys_web_controller/controller.php';

@@ -26,6 +26,12 @@ abstract class controller
         return $parser;
     }
 
+    protected function loadView($view)
+    {
+       return $this->parser()->loadView($view);
+
+    }
+
     public function getConfig()
     {
         static $config;

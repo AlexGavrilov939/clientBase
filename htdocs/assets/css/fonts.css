@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'PTSerifRegular';
+    src: url('fonts/ptf55f.eot');
+    src: url('fonts/ptf55f.eot') format('embedded-opentype'),
+    url('fonts/ptf55f.woff') format('woff'),
+    url('fonts/ptf55f.ttf') format('truetype'),
+    url('fonts/ptf55f.svg#PTSerifRegular') format('svg');
+}
+@font-face {
+    font-family: 'PTSerifItalic';
+    src: url('fonts/ptf56f.eot');
+    src: url('fonts/ptf56f.eot') format('embedded-opentype'),
+    url('fonts/ptf56f.woff') format('woff'),
+    url('fonts/ptf56f.ttf') format('truetype'),
+    url('fonts/ptf56f.svg#PTSerifItalic') format('svg');
+}
+@font-face {
+    font-family: 'PTSerifBold';
+    src: url('fonts/ptf75f.eot');
+    src: url('fonts/ptf75f.eot') format('embedded-opentype'),
+    url('fonts/ptf75f.woff') format('woff'),
+    url('fonts/ptf75f.ttf') format('truetype'),
+    url('fonts/ptf75f.svg#PTSerifBold') format('svg');
+}
+@font-face {
+    font-family: 'PTSerifBoldItalic';
+    src: url('fonts/ptf76f.eot');
+    src: url('fonts/ptf76f.eot') format('embedded-opentype'),
+    url('fonts/ptf76f.woff') format('woff'),
+    url('fonts/ptf76f.ttf') format('truetype'),
+    url('fonts/ptf76f.svg#PTSerifBoldItalic') format('svg');
+}

@@ -1,0 +1,16 @@
+{
+    "name" : "system_lib_excel",
+    "description" : "library for working with excel files",
+    "package" : {
+        "path" : "/system/lib/",
+        "init" : "excel.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

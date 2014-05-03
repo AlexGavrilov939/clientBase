@@ -1,0 +1,16 @@
+{
+    "name" : "system_net_socketServer",
+    "description" : "TCP socket server.",
+    "package" : {
+        "path" : "/mpr/net/",
+        "init" : "socketServer.php",
+        "version" : "3.1"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "socket,server,tcp"
+    },
+    "depends" : [
+        "mpr_debug_log"
+    ]
+}

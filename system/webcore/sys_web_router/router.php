@@ -37,10 +37,8 @@ class Router
     public function launch()
     {
         $data = $this->request;
-
-        $controller = $data[0] ? $data[0] : self::DEFAULT__CONTROLLER;
-        $method = $data[1] ? $data[1] : self::DEFAULT__METHOD;
-
+        $controller = $data[0] ? pathinfo($data[0], PATHINFO_FILENAME) : self::DEFAULT__CONTROLLER;
+        $method = $data[1] ? pathinfo($data[1], PATHINFO_FILENAME) : self::DEFAULT__METHOD;
         $this->loadController($controller);
         (new $controller)->$method();
     }
