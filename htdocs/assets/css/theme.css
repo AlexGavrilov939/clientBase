@@ -202,6 +202,9 @@ html,body{
     position: absolute;
     left: 0;
 }
+.add-track-number img {
+    left: 76px;
+}
 .button{
     width: 160px;
     margin: 8px 0;
@@ -219,6 +222,7 @@ html,body{
 button.track-number {
     width: 250px;
     text-align: right;
+    border: 0;
 }
 .add-address button:hover {
     border-color: #36638E;
@@ -235,9 +239,9 @@ button.track-number {
 #track-number-area {
     padding: 3px;
     margin: 15px 0 -5px -3px;
-    width: 300px;
+    width: 245px;
     float: left;
-    display: none;
+    font-weight: bold;
 }
 button.form-control {
     font-family: PTSerifBold;
@@ -265,4 +269,76 @@ button.save{
 }
 button.goto {
     background: url("../img/overlay.png") #4077aa;
+}
+.shipment {
+    border-top: 2px dotted #36638E;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+#add-shipment-item {
+    font-family: PTSerifBold;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 1px solid #36638E;
+    color: #36638E;
+    cursor: pointer;
+}
+.shipment-item {
+    background: url("../img/overlay.png") #fff;
+    border: 1px dotted #D1573A;
+    width: 95%;
+    margin: 0 auto 15px;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(50, 50, 50, 0.35);
+    -moz-box-shadow:    0px 0px 5px 2px rgba(50, 50, 50, 0.35);
+    box-shadow:         0px 0px 5px 2px rgba(50, 50, 50, 0.35);
+}
+    .shipment-item .media, .shipment-item .info, .shipment-item .desc {
+        display: inline-block;
+        *display: inline;
+        vertical-align: top;
+        margin: 10px;
+        padding-top: 5px;
+        font-family: PTSerifRegular;
+    }
+    .shipment-item .media {
+        width: 200px;
+        height: 250px;
+    }
+    .shipment-item .info {
+        border: 3px dotted #D1573A;
+        border-top: none;
+        border-bottom: none;
+        padding: 0 30px 0 10px;
+    }
+    .shipment-item .info .cart-item{
+        position: relative;
+        padding-left: 120px;
+        margin: 15px 0;
+    }
+        .shipment-item .info input {
+            width: 150px;
+        }
+        .shipment-item .info label {
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 100px;
+            color: #D1573A;
+            font-family: PTSerifRegular;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    .shipment-item .media .image-view {
+        background: url("../img/no-image.png") center center;
+        width: 190px;
+        height: 190px;
+        margin: 0 auto;
+        border: 2px solid #D1573A;
+    }
+#add-shipment-item:hover {
+    color: #315980;
+    border-color: #274867;
+}
+#add-image {
+    margin-top: 20px;
 }

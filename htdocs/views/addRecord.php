@@ -38,12 +38,38 @@
                     <div class="info-item">
                         <div class="add-track-number">
                             <img  src="../assets/img/post.png"/>
-                            <button class="button track-number" data-id="track-number-area">Добавить почтовый трек номер</button>
+                            <button class="button track-number">Почтовый трек номер</button>
                         </div>
                     </div>
                 </div>
                 <div class="info-group">
                     <input id="track-number-area" name="track-number" placeholder="Введите почтовый номер">
+                </div>
+                <div class="shipment">
+                    <div class="shipment-item">
+                        <div class="media">
+                            <div class="image-view"></div>
+                            <button id="add-image">Добавить изображение</button>
+                        </div>
+                        <div class="info">
+                            <div class="cart-item">
+                                <label for="title">Название: </label><input type="text" name="title" placeholder="название продукта"/>
+                            </div>
+                            <div class="cart-item">
+                                <label for="article">Артикул: </label><input type="text" name="article" placeholder="Артикул продукта"/>
+                            </div>
+                            <div class="cart-item">
+                                <label for="price">Цена: </label><input type="text" name="price" placeholder="Цена"/>
+                            </div>
+                            <div class="cart-item">
+                                <label for="delivery">Доставка: </label><input type="text" name="delivery" placeholder="Стоимость доставки"/>
+                            </div>
+                        </div>
+                        <div class="desc">
+                            Комментарии
+                        </div>
+                    </div>
+                    <span id="add-shipment-item">Добавить наименование</span>
                 </div>
 
             </div>
@@ -60,6 +86,10 @@
         $("button").click(function (){
             var clickId = $(this).data("id");
             $('#'+ clickId).toggle();
+        });
+
+        $("#add-shipment-item").click(function() {
+            console.log('test');
         });
     });
 </script>
