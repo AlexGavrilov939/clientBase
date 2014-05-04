@@ -4,6 +4,7 @@
         <link type="text/css" rel="stylesheet" href="../assets/css/reset.css"/>
         <link type="text/css" rel="stylesheet" href="../assets/css/theme.css"/>
         <link type="text/css" rel="stylesheet" href="../assets/css/fonts.css"/>
+        <link type="text/css" rel="stylesheet" href="../assets/css/upload.css"/>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"  type="text/javascript"></script>
     </head>

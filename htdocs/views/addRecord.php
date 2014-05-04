@@ -50,8 +50,20 @@
                         <div title="Удалить карточку" class="delete-item">&#10006;</div>
 
                         <div class="media">
-                            <div class="image-view"></div>
-                            <button id="add-image">Добавить изображение</button>
+                            <form class="upload" method="post" action="addRecord/ajax" enctype="multipart/form-data">
+                                <div class="drop">
+                                    Drop Here
+                                    <a>Browse</a>
+                                    <input type="file" name="upl" multiple />
+                                </div>
+                                <div class="blockedImage">
+                                    <div class="deleteButton">Delete</div>
+                                </div>
+                                <ul>
+                                    <!-- The file uploads will be shown here -->
+                                </ul>
+                            </form>
+
                         </div>
                         <div class="info">
                             <div class="cart-item">
@@ -78,6 +90,7 @@
             </div>
     </div>
 </div>
+
 <div class="control-section-outer">
     <div class="control-section-inner">
         <button class="form-control" id="goto">Перейти к списку заказов</button>
@@ -102,8 +115,7 @@
                 phone       : $('#phone').val(),
                 address     : $('#address-area').val(),
                 description : $('#description-area').val(),
-                trackNumber : $('#track-number-area').val(),
-                
+                trackNumber : $('#track-number-area').val()
             };
             console.log(data);
         });
@@ -112,4 +124,25 @@
     $(document).on('click', ".delete-item", function() {
         $(this).parent().remove();
     });
+
 </script>
+<script>
+    $(document).on('click', ".deleteButton", function() {
+        console.log('make request');
+        var data = $(this).parent().find('img').attr("src");
+        console.log(data);
+        $.post( "addRecord/deleteImage",data, function( data ) {
+            $( ".result" ).html( data );
+        });
+    });
+</script>
+<!-- JavaScript Includes -->
+<script src="../assets/js/jquery.knob.js"></script>
+
+<!-- jQuery File Upload Dependencies -->
+<script src="../assets/js/jquery.ui.widget.js"></script>
+<script src="../assets/js/jquery.iframe-transport.js"></script>
+<script src="../assets/js/jquery.fileupload.js"></script>
+
+<!-- Our main JS file -->
+<script src="../assets/js/upload.js"></script>

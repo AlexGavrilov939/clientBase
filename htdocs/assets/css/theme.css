@@ -354,12 +354,11 @@ button#goto {
     color: #315980;
     border-color: #274867;
 }
-#add-image {
+.addImage {
     margin-top: 20px;
     font-family: PTSerifBold;
     color: #D1573A;
     cursor: pointer;
-    width: 194px;
 }
 textarea.item-description-area {
     text-align: left;
