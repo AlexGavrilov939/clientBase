@@ -8,7 +8,7 @@
         <table>
             <tr>
                 <td>
-                    test
+                    <?php var_dump($data[0])?>
                 </td>
             </tr>
         </table>
