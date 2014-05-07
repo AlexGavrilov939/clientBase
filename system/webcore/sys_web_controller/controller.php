@@ -11,6 +11,7 @@ abstract class controller
 {
     protected $baseClass;
 
+    abstract function index();
 
     public function __construct()
     {
@@ -59,7 +60,7 @@ abstract class controller
         $this->parser()->parse('404');
     }
 
-    protected function checkAjaxRequest()
+    protected function isAjaxRequest()
     {
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             return true;

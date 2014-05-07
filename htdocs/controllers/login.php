@@ -1,27 +1,27 @@
 <?php
-use sys\pkg\config;
-use sys\web\controller;
-use system\lib\excel;
-
 /**
  * Created by Alex Gavrilov.
  */
+
+use sys\web\controller;
+
 class Login
     extends controller
 {
 
     public function index()
     {
-        session_start();
-        $_SESSION['test'] = 'testtttt';
-        var_dump($_SESSION);
         $this->parser()->parse('loginPage');
-
     }
 
-    public function signin()
+    public function test()
     {
-        if($this->checkAjaxRequest()) {
+        echo 'test';
+    }
+
+    public function signIn()
+    {
+        if($this->isAjaxRequest()) {
             $login = $_POST['login'];
             $password = $_POST['password'];
 

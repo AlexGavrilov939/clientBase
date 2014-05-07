@@ -18,6 +18,12 @@ class addRecord
         $this->parser()->parse('template', $data);
     }
 
+    public function test()
+    {
+        $data['content'] = $this->parser()->loadView('addRecord');
+        $this->parser()->parse('template', $data);
+    }
+
     public function ajax()
     {
             if($this->checkAjaxRequest()) {

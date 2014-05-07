@@ -16,11 +16,11 @@
 
                     <div class="formInput">
                         <img src="../assets/img/login.png"/>
-                        <input type="text" id="login" name="login"/>
+                        <input type="text" id="login" name="login" placeholder="login"/>
                     </div>
                     <div class="formInput">
                         <img src="../assets/img/password.png"/>
-                        <input type="password" id="password" name="password"/>
+                        <input type="password" id="password" name="password" placeholder="password"/>
                     </div>
                     <div class="formSubmit">
                         <input type="submit" id="submit" value="sign in"/>
