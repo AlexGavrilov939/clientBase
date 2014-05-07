@@ -529,7 +529,7 @@
         // Adds convenience methods to the callback arguments:
         _addConvenienceMethods: function (e, data) {
             var that = this;
-            data.submit = function () {
+            data.submit = function (){
                 if (this.state() !== 'pending') {
                     data.jqXHR = this.jqXHR =
                         (that._trigger('submit', e, this) !== false) &&

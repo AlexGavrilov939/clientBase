@@ -373,3 +373,190 @@ label[for="item-description-area"] {
     font-size: 14px;
     color: #D1573A;
 }
+
+.loginArea{
+    border-top: 3px solid #97BD47;
+}
+#formWrapper, #DbList {
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    margin-left: -200px;
+    margin-top: -125px;
+    background: url("../img/opacity.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 3px 3px 3px 3px;
+    padding: 6px;
+    box-shadow: 0 1px 1px #606060, 0 1px 1px #2A2A2A inset;
+
+}
+#loginForm {
+    width: 100%;
+    height: 100%;
+}
+.formTitle {
+    display: block;
+    text-align: center;
+    font-family: PTSerifRegular;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    text-transform: capitalize;
+    background: url("../img/overlay.png") repeat scroll 0 0%, linear-gradient(to bottom, #504B71 0%, #453D5B 50%, #5A5B87 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+.formInput {
+    background: #fff;
+    margin: 10px auto;
+    padding: 5px;
+    width: 80%;
+    border-radius: 5px;
+    position: relative;
+}
+.formSubmit, .DbSubmit {
+    background: url("../img/overlay.png") repeat scroll 0 0%, -moz-linear-gradient(center top , #EC795D 0%, #D1573A 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding: 5px 0;
+    margin-top: 40px;
+    text-align: center;
+}
+.formSubmit input, .DbSubmit input{
+    cursor: pointer;
+    padding: 0 15px;
+    font-family: PTSerifRegular;
+    font-size: 16px;
+    font-weight: bold;
+}
+.formInput img {
+    position: absolute;
+    width: 28px;
+    right: 15px;
+}
+.formInput input {
+    width: 240px;
+    height: 25px;
+    text-align: center;
+    font-family: PTSerifBold;
+    font-size: 16px;
+}
+#DbList {
+    width: 700px;
+    height: 400px;
+    margin-top: -190px;
+    margin-left: -350px;
+    padding: 15px;
+
+}
+#DbListInner {
+    height: 100%;
+    background: url("../img/content.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    opacity: 0.95;
+    position: relative;
+}
+    #DbListInner .title {
+        text-align: center;
+        padding-top: 25px;
+        font-family: PTSerifRegular;
+        font-size: 20px;
+        font-weight: bold;
+        color: #36638E;
+        border-bottom: 1px solid #B9C4DA;
+        width: 500px;
+        margin: 0 auto;
+        padding-bottom: 10px;
+    }
+
+.DbList {
+    width: 300px;
+    margin: 20px auto 0;
+    list-style-type: none;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 200px;
+}
+.DbList li {
+    color: #36638E;
+    font-family: PTSerifBold;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 10px 10px 0 50px;
+    border-bottom: 3px dotted #606060;
+    cursor: pointer;
+    position: relative;
+}
+.DbList li img.ok {
+    position: absolute;
+    width: 20px;
+    left: 0;
+    top: 15px;
+    display: none;
+}
+.DbList li .delete {
+    position: absolute;
+    z-index: 9999;
+    display: block;
+    bottom: 0;
+    right: 10px;
+}
+.DbList li .delete:hover{
+    opacity: 0.8;
+}
+    .DbList li .delete span, .DbList li .delete img {
+        display: inline-block;
+        *display: inline;
+        vertical-align: middle;
+    }
+    .DbList li .delete span {
+        font-family: PTSerifBold;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: lowercase;
+        margin-right: 5px;
+        color: #c80318;
+    }
+    .DbList li .delete img {
+        width: 15px;
+    }
+.DbList li img.delete:hover {
+    opacity: 0.85;
+}
+.addBase {
+    width: 300px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    margin-left: -150px;
+}
+    .addBase button {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        height: 36px;
+        font-family: PTSerifRegular;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        cursor: pointer;
+        -webkit-box-shadow: 0px 0px 3px 2px rgba(50, 50, 50, 0.7);
+        -moz-box-shadow:    0px 0px 3px 2px rgba(50, 50, 50, 0.7);
+        box-shadow:         0px 0px 3px 2px rgba(50, 50, 50, 0.7);
+
+    }
+    .addBase input {
+        padding: 6px 0;
+        text-align: center;
+        display: block;
+        width: 164px;
+        padding-left: 130px;
+        font-family: PTSerifBold;
+        font-size: 16px;
+    }
+    .DbSubmit {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }

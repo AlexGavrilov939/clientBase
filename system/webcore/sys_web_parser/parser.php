@@ -21,10 +21,14 @@ class parser
     }
 
 
-    public function loadView($template)
+    public function loadView($template, $data = null)
     {
         $loadPath = $this->getLoadPath($template);
-        return file_get_contents($loadPath);
+        ob_start();
+        include($loadPath);
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     }
 
     protected function getLoadPath($template)

@@ -207,6 +207,12 @@ class mongoDb
         return $this->db->selectCollection($collection)->count();
     }
 
+    public function getCollectionNames($excluded = [])
+    {
+        $collections = $this->db->getCollectionNames();
+        return array_diff($collections, $excluded);
+    }
+
     /**
      * Get count objects for collection by criteria
      *
@@ -227,5 +233,16 @@ class mongoDb
     public function getDatabase()
     {
         return $this->db;
+    }
+
+    public function createCollection($collectionName)
+    {
+        $this->db->createCollection($collectionName);
+        return true;
+    }
+
+    public function removeCollection($collectionName)
+    {
+        $this->db->dropCollection($collectionName);
     }
 }

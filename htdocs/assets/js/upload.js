@@ -7,15 +7,15 @@ $(function(){
         ul = $(this).parent().parent().find('ul');
         uploadForm = $(this).parent().parent();
         $(this).parent().find('input').click();
-        var test = fileupload(uploadForm);
-        console.log(test);
+        fileupload(uploadForm);
     });
 
-    function appendImage(filePath, obj)
+    function appendImage(fileName, obj)
     {
+        var filePath = '../../uploads/tmp/' + fileName;
         var blockedImage = obj.find('.blockedImage');
-        var img ='<img src="' + filePath + '"/>';
-        blockedImage.append(img);
+        var img ='<img class="tempImage" src="' + filePath + '"/>';
+        blockedImage.html(img);
         blockedImage.show();
     }
 
@@ -28,7 +28,7 @@ $(function(){
             // either via the browse button, or via drag/drop:
             add: function (e, data) {
                 var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
-                    ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span></span></li>');
+                    ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span title="Удалить изображение" class="status"></span></li>');
 
                 // Append the file name and file size
                 tpl.find('p').text(data.files[0].name)
@@ -55,12 +55,11 @@ $(function(){
 
                 // Automatically upload the file once it is added to the queue
                 var jqXHR = data.submit();
+
                 $(this).find('.drop').hide();
-                console.log(jqXHR);
-                console.log(jqXHR.statusText);
 
 
-                appendImage(jqXHR, $(this));
+                appendImage(data.files[0].name, $(this));
 
             },
 
@@ -84,7 +83,6 @@ $(function(){
             }
 
         });
-        return 'test';
     }
 
 

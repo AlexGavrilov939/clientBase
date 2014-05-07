@@ -57,7 +57,7 @@
                                     <input type="file" name="upl" multiple />
                                 </div>
                                 <div class="blockedImage">
-                                    <div class="deleteButton">Delete</div>
+<!--                                    <div class="deleteButton">Delete</div>-->
                                 </div>
                                 <ul>
                                     <!-- The file uploads will be shown here -->
@@ -67,16 +67,16 @@
                         </div>
                         <div class="info">
                             <div class="cart-item">
-                                <label for="title">Название: </label><input type="text" name="title" placeholder="название продукта"/>
+                                <label for="title">Название: </label><input type="text" class="title" name="title" placeholder="название продукта"/>
                             </div>
                             <div class="cart-item">
-                                <label for="article">Артикул: </label><input type="text" name="article" placeholder="Артикул продукта"/>
+                                <label for="article">Артикул: </label><input type="text" class="article" name="article" placeholder="Артикул продукта"/>
                             </div>
                             <div class="cart-item">
-                                <label for="price">Цена: </label><input type="text" name="price" placeholder="Цена"/>
+                                <label for="price">Цена: </label><input type="text" class="price" name="price" placeholder="Цена"/>
                             </div>
                             <div class="cart-item">
-                                <label for="delivery">Доставка: </label><input type="text" name="delivery" placeholder="Стоимость доставки"/>
+                                <label for="delivery">Доставка: </label><input type="text" class="delivery" name="delivery" placeholder="Стоимость доставки"/>
                             </div>
                         </div>
                         <div class="desc">
@@ -111,14 +111,47 @@
         });
         $("#save").click(function () {
             var data = {
-                fio         : $('#fio').val(),
-                phone       : $('#phone').val(),
-                address     : $('#address-area').val(),
-                description : $('#description-area').val(),
-                trackNumber : $('#track-number-area').val()
+                clientInfo : {
+                    fio         : $('#fio').val(),
+                    phone       : $('#phone').val(),
+                    address     : $('#address-area').val(),
+                    description : $('#description-area').val(),
+                    trackNumber : $('#track-number-area').val()
+                }
+//                orderInfo : getOrders()
             };
             console.log(data);
+            $.post( "addRecord/ajaxSaveOrder",JSON.stringify(data), function( data ) {
+//                console.log(data);
+//                window.location.href = "addRecord/success";
+            });
         });
+
+        function getOrders()
+        {
+            var data = [];
+            $('.shipment-item').each(function(i, obj) {
+                data[i] = {
+                    name        : $(this).find('input.title').val(),
+                    article     : $(this).find('input.article').val(),
+                    price       : $(this).find('input.price').val(),
+                    delivery    : $(this).find('input.delivery').val(),
+                    description : $(this).find('textarea.item-description-area').val(),
+                    imgPath     : getImgName($(this))
+                };
+            });
+
+            function getImgName(obj)
+            {
+                var img = obj.find('img.tempImage');
+                if($(img).length) {
+                    return img.attr('src').split('/').pop();
+                }
+                return "";
+            }
+
+            return JSON.stringify(data);
+        }
     });
 
     $(document).on('click', ".delete-item", function() {
@@ -134,6 +167,13 @@
         $.post( "addRecord/deleteImage",data, function( data ) {
             $( ".result" ).html( data );
         });
+    });
+</script>
+<script>
+    $(document).on('click', ".status", function() {
+        var form = $(this).parents('.upload');
+        form.find('.blockedImage').hide();
+        form.find('.drop').show();
     });
 </script>
 <!-- JavaScript Includes -->

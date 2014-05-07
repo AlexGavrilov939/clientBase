@@ -258,3 +258,6 @@ footer h2 i{
     width: 160px;
     height: 140px;
 }
+span.status:hover {
+    background: url("../img/icons.png") no-repeat scroll 2px -13px;
+}
