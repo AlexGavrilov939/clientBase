@@ -530,10 +530,14 @@
         _addConvenienceMethods: function (e, data) {
             var that = this;
 <<<<<<< HEAD
+<<<<<<< HEAD
             data.submit = function () {
 =======
             data.submit = function (){
 >>>>>>> frontend
+=======
+            data.submit = function (){
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
                 if (this.state() !== 'pending') {
                     data.jqXHR = this.jqXHR =
                         (that._trigger('submit', e, this) !== false) &&

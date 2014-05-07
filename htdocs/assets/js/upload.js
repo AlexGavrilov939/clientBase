@@ -8,6 +8,7 @@ $(function(){
         uploadForm = $(this).parent().parent();
         $(this).parent().find('input').click();
 <<<<<<< HEAD
+<<<<<<< HEAD
         var test = fileupload(uploadForm);
         console.log(test);
     });
@@ -18,6 +19,8 @@ $(function(){
         var img ='<img src="' + filePath + '"/>';
         blockedImage.append(img);
 =======
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
         fileupload(uploadForm);
     });
 
@@ -27,7 +30,10 @@ $(function(){
         var blockedImage = obj.find('.blockedImage');
         var img ='<img class="tempImage" src="' + filePath + '"/>';
         blockedImage.html(img);
+<<<<<<< HEAD
 >>>>>>> frontend
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
         blockedImage.show();
     }
 
@@ -41,10 +47,14 @@ $(function(){
             add: function (e, data) {
                 var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
 <<<<<<< HEAD
+<<<<<<< HEAD
                     ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span></span></li>');
 =======
                     ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span title="Удалить изображение" class="status"></span></li>');
 >>>>>>> frontend
+=======
+                    ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span title="Удалить изображение" class="status"></span></li>');
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
 
                 // Append the file name and file size
                 tpl.find('p').text(data.files[0].name)
@@ -72,6 +82,7 @@ $(function(){
                 // Automatically upload the file once it is added to the queue
                 var jqXHR = data.submit();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 $(this).find('.drop').hide();
                 console.log(jqXHR);
                 console.log(jqXHR.statusText);
@@ -79,12 +90,17 @@ $(function(){
 
                 appendImage(jqXHR, $(this));
 =======
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
 
                 $(this).find('.drop').hide();
 
 
                 appendImage(data.files[0].name, $(this));
+<<<<<<< HEAD
 >>>>>>> frontend
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
 
             },
 
@@ -109,9 +125,12 @@ $(function(){
 
         });
 <<<<<<< HEAD
+<<<<<<< HEAD
         return 'test';
 =======
 >>>>>>> frontend
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
     }
 
 

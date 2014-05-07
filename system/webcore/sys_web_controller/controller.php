@@ -15,8 +15,11 @@ abstract class controller
     public function __construct()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         header('Content-Type: text/html; charset=utf-8');
 =======
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
         if(!$this->loggedIn() && $_SERVER['REQUEST_URI'] != '/login' && $_SERVER['REQUEST_URI'] != '/login/signin') {
             header('Location: /login');
         }
@@ -28,7 +31,10 @@ abstract class controller
             return true;
         }
         return false;
+<<<<<<< HEAD
 >>>>>>> frontend
+=======
+>>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc
     }
 
     protected function parser()
