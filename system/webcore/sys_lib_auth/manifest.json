@@ -1,0 +1,16 @@
+{
+    "name" : "sys_lib_auth",
+    "description" : "auth library",
+    "package" : {
+        "path" : "/sys/lib/",
+        "init" : "auth.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

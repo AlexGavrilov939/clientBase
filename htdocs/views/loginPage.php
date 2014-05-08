@@ -38,7 +38,7 @@
                 $.post( url, data, function( data ) {
                     console.log(data);
                     if(data == true) {
-                        $.post('/login/DBselect', function(data) {
+                        $.post('/login/checkAuth', function(data) {
                             $(".loginArea").html(data);
                         });
                     } else {

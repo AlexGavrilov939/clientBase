@@ -29,20 +29,20 @@ abstract class controller
         return false;
     }
 
+    /**
+     *  Function return templateParser instance
+     *
+     * @return templateParser
+     */
     protected function view()
     {
         $this->baseClass = get_called_class();
-        static $parser;
+        static $templateParser;
         if(!isset($parser)) {
-            $parser = new templateParser();
+            $templateParser = new templateParser();
         }
-        return $parser;
-    }
 
-    protected function loadView($view)
-    {
-       return $this->parser()->loadView($view);
-
+        return $templateParser;
     }
 
     public function getConfig()
@@ -51,20 +51,32 @@ abstract class controller
         if (!isset($config)) {
             $config = config::getPackageConfig($this->baseClass);
         }
+
         return $config;
 
     }
 
-    protected function get404()
+    /**
+     *  Displays the page 404
+     */
+    protected function get404page()
     {
-        $this->parser()->parse('404');
+        $this->view()->generate('404page');
     }
 
+    /**
+     *  Checks if request is Ajax and if not then displays page 404
+     *
+     * @return bool
+     */
     protected function isAjaxRequest()
     {
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
             return true;
         }
+        $this->get404page();
+
         return false;
     }
 }

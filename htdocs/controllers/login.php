@@ -8,8 +8,17 @@ use sys\web\controller;
 class Login
     extends controller
 {
+    /**
+     *  Main controller function
+     */
     public function index()
     {
-        $content = $this->view()->generate('loginPage', [], false);
+        $this->view()->generate('loginPage');
     }
+
+    public function checkAuth()
+    {
+        echo 'test';
+    }
+
 }
