@@ -29,12 +29,12 @@ abstract class controller
         return false;
     }
 
-    protected function parser()
+    protected function view()
     {
         $this->baseClass = get_called_class();
         static $parser;
         if(!isset($parser)) {
-            $parser = new parser();
+            $parser = new templateParser();
         }
         return $parser;
     }

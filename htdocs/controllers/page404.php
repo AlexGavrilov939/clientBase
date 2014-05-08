@@ -11,6 +11,6 @@ class page404
 {
     public function index()
     {
-        $this->parser()->parse('404page');
+        $this->view()->generate('404page');
     }
 }

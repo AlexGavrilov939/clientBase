@@ -1,9 +1,9 @@
 {
-    "name" : "sys_web_parser",
+    "name" : "sys_web_templateParser",
     "description" : "template parser",
     "package" : {
         "path" : "/sys/web/",
-        "init" : "parser.php",
+        "init" : "templateParser.php",
         "version" : "0.1a"
     },
     "meta" : {

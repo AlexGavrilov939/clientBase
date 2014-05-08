@@ -39,7 +39,6 @@ class Router
     {
         $loadPath = $this->controllerLocation . $controller . $this->controllerExt;
         if(!file_exists($loadPath)) {
-            echo 'prepare to load 404 page';
             $this->showPage404();
             return false;
         }
