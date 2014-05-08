@@ -1,0 +1,46 @@
+html, body {
+    height: 100%;
+    background: url("../img/body.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+}
+.page404text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    font-family: PTSerifRegular;
+    font-size: 22px;
+    text-align: center;
+
+}
+    .page404text h2 , span.title{
+        display: block;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 40px;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(60, 60, 60, 1);
+
+    }
+
+    span.title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .page404text span {
+        color: #fff;
+    }
+    .page404text span a {
+        display: block;
+        width: 150px;
+        text-align: center;
+        margin: 15px auto;
+        color: #D1573A;
+        font-family: PTSerifBold;
+        text-decoration: none;
+        border-bottom: 3px dotted #D1573A;
+    }
+    .page404text span a:hover {
+        opacity: 0.8;
+    }

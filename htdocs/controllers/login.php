@@ -8,15 +8,9 @@ use sys\web\controller;
 class Login
     extends controller
 {
-
     public function index()
     {
         $this->parser()->parse('loginPage');
-    }
-
-    public function test()
-    {
-        echo 'test';
     }
 
     public function signIn()

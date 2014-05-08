@@ -51,4 +51,5 @@ abstract class config
     {
         return APP__ROOT . '/configs/' . $config . '.php';
     }
+
 }

@@ -9,67 +9,84 @@ use ReflectionMethod;
 
 class Router
 {
-    const DEFAULT__CONTROLLER = 'base';
-    const DEFAULT__METHOD = 'index';
+    const CONTROLLER__DEFAULT = 'main';
+    const CONTROLLER__NOT_FOUND_PAGE = 'page404';
+    const METHOD__DEFAULT = 'index';
 
-    protected $requestParams = [];
+    private $controllerLocation;
+    private $controllerExt;
+    private $requestParams = [];
+    private $controllersInstance = [];
 
     public function __construct()
     {
         $this->requestParams = $this->prepareParams();
+        $this->controllerLocation = WEB_PATH . '/controllers/';
+        $this->controllerExt = '.php';
     }
 
     public function prepareParams()
     {
        $requestData = explode('/', substr($_SERVER['REQUEST_URI'], 1));
+
        return [
-         'controller' => $requestData[0] ? pathinfo($requestData[0], PATHINFO_FILENAME) : self::DEFAULT__CONTROLLER,
-         'method'     => $requestData[1] ? pathinfo($requestData[1], PATHINFO_FILENAME) : self::DEFAULT__METHOD
+         'controller' => $requestData[0] ? pathinfo($requestData[0], PATHINFO_FILENAME) : self::CONTROLLER__DEFAULT,
+         'method'     => $requestData[1] ? pathinfo($requestData[1], PATHINFO_FILENAME) : self::METHOD__DEFAULT
        ];
     }
 
-    protected function loadController($controller)
+    private function loadController($controller)
     {
-        $loadPath = WEB_PATH . '/controllers/' . $controller . '.php';
+        $loadPath = $this->controllerLocation . $controller . $this->controllerExt;
         if(!file_exists($loadPath)) {
-            exit($this->showPage404());
+            echo 'prepare to load 404 page';
+            $this->showPage404();
+            return false;
         }
-        require_once $loadPath;
+        return require_once $loadPath;
     }
 
     public function launch()
     {
         $controller = $this->requestParams['controller'];
         $method = $this->requestParams['method'];
-        $this->loadController($controller);
-        $this->loadMethod($controller, $method);
-       // (new $controller)->$method();
+        if($this->loadController($controller)) {
+          $this->loadMethod($controller, $method);
+        }
+    }
+
+    private function isClassMethodPublic($class, $method)
+    {
+        $reflection = new ReflectionMethod($class, $method);
+        if ($reflection->isPublic()) {
+            return true;
+        }
+        return false;
+    }
+
+    private function getControllerInstance($controller)
+    {
+        if(!isset($this->controllersInstance[$controller])) {
+            $this->controllersInstance[$controller] = (new $controller);
+        }
+        return $this->controllersInstance[$controller];
     }
 
     protected function loadMethod($controller, $method)
     {
-        static $controllerInstance;
-        if(!isset($controllerInstance))
-        {
-            $controllerInstance = (new $controller);
-        }
-
-        if (method_exists($controllerInstance, $method))
-        {
-            $reflection = new ReflectionMethod($controller, $method);
-            if (!$reflection->isPublic()) {
-                die($this->showPage404());
+        $controllerInstance = $this->getControllerInstance($controller);
+        if(method_exists($controllerInstance, $method)) {
+            if($this->isClassMethodPublic($controllerInstance, $method)) {
+                $controllerInstance->$method();
             }
-            return $controllerInstance->$method();
+        } else {
+            $this->showPage404();
         }
-        $this->showPage404();
     }
 
-    public function showPage404()
+    private function showPage404()
     {
-        echo 'тут будет страница 404';
-        return '';
+        $this->loadController(self::CONTROLLER__NOT_FOUND_PAGE);
+        $this->loadMethod(self::CONTROLLER__NOT_FOUND_PAGE, self::METHOD__DEFAULT);
     }
-
-
 }
