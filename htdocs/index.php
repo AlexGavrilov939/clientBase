@@ -12,4 +12,4 @@ const ENV = 'web';
 header('Content-Type: text/html; charset=UTF-8');
 
 require_once $APP_PATH . '/system/init.php';
-(new \sys\web\router())->launch();
+\sys\web\router::launch();

@@ -4,11 +4,11 @@
  */
 
 \sys\pkg\config::$package['system_lib_mongoDb'] = [
-    'defaultLocal' => [
+    'local' => [
         'host' => 'localhost',
-        'dbname' => 'clientBase'
+        'dbname' => 'clientBase',
     ],
-    'defaultRemote' => [
+    'remote' => [
         'host' => '',
         'dbname' => '',
     ]

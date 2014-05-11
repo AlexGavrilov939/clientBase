@@ -13,19 +13,25 @@ class Router
     const CONTROLLER__NOT_FOUND_PAGE = 'page404';
     const METHOD__DEFAULT = 'index';
 
-    private $controllerLocation;
-    private $controllerExt;
-    private $requestParams = [];
-    private $controllersInstance = [];
-
-    public function __construct()
+    /**
+     *  Initializes the configuration
+     *
+     * @return array
+     */
+    private static function prepareConfigs()
     {
-        $this->requestParams = $this->prepareParams();
-        $this->controllerLocation = WEB_PATH . '/controllers/';
-        $this->controllerExt = '.php';
+        static $configs;
+        if(!isset($configs)) {
+            $configs = [
+                'controllerLocation' => WEB_PATH . '/controllers/',
+                'controllerExt' => '.php'
+            ];
+        }
+
+        return $configs;
     }
 
-    public function prepareParams()
+    private static function prepareParams()
     {
        $requestData = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 
@@ -35,26 +41,60 @@ class Router
        ];
     }
 
-    private function loadController($controller)
+    /**
+     *  Load controller or page 404
+     *
+     * @param $controller
+     * @return bool|mixed
+     */
+    private static function loadController($controller)
     {
-        $loadPath = $this->controllerLocation . $controller . $this->controllerExt;
+        $loadPath = self::prepareConfigs()['controllerLocation'] . $controller . self::prepareConfigs()['controllerExt'];
         if(!file_exists($loadPath)) {
-            $this->showPage404();
+            self::showPage404();
             return false;
         }
+
         return require_once $loadPath;
     }
 
-    public function launch()
+    /**
+     *  Load public controller method or page 404
+     *
+     * @param $controller
+     * @param $method
+     */
+    private static function loadMethod($controller, $method)
     {
-        $controller = $this->requestParams['controller'];
-        $method = $this->requestParams['method'];
-        if($this->loadController($controller)) {
-          $this->loadMethod($controller, $method);
+        $controllerInstance = self::getControllerInstance($controller);
+        if(method_exists($controllerInstance, $method)) {
+            if(self::isClassMethodPublic($controllerInstance, $method)) {
+                $controllerInstance->$method();
+            }
+        } else {
+            self::showPage404();
         }
     }
 
-    private function isClassMethodPublic($class, $method)
+    /**
+     *  Loads the appropriate controller or error page
+     */
+    public static function launch()
+    {
+        $params  = self::prepareParams();
+        if(self::loadController($params['controller'])) {
+          self::loadMethod($params['controller'], $params['method']);
+        }
+    }
+
+    /**
+     *  Check if a class method is public
+     *
+     * @param $class
+     * @param $method
+     * @return bool
+     */
+    private static function isClassMethodPublic($class, $method)
     {
         $reflection = new ReflectionMethod($class, $method);
         if ($reflection->isPublic()) {
@@ -63,29 +103,28 @@ class Router
         return false;
     }
 
-    private function getControllerInstance($controller)
+    /**
+     *  Get the controller instance
+     *
+     * @param $controller
+     * @return mixed
+     */
+    private static function getControllerInstance($controller)
     {
-        if(!isset($this->controllersInstance[$controller])) {
-            $this->controllersInstance[$controller] = (new $controller);
+        static $controllerInstance;
+        if(!isset($controllerInstance[$controller])) {
+            $controllerInstance[$controller] = (new $controller);
         }
-        return $this->controllersInstance[$controller];
+
+        return $controllerInstance[$controller];
     }
 
-    protected function loadMethod($controller, $method)
+    /**
+     *  Loads the controller output error page
+     */
+    private static function showPage404()
     {
-        $controllerInstance = $this->getControllerInstance($controller);
-        if(method_exists($controllerInstance, $method)) {
-            if($this->isClassMethodPublic($controllerInstance, $method)) {
-                $controllerInstance->$method();
-            }
-        } else {
-            $this->showPage404();
-        }
-    }
-
-    private function showPage404()
-    {
-        $this->loadController(self::CONTROLLER__NOT_FOUND_PAGE);
-        $this->loadMethod(self::CONTROLLER__NOT_FOUND_PAGE, self::METHOD__DEFAULT);
+        self::loadController(self::CONTROLLER__NOT_FOUND_PAGE);
+        self::loadMethod(self::CONTROLLER__NOT_FOUND_PAGE, self::METHOD__DEFAULT);
     }
 }

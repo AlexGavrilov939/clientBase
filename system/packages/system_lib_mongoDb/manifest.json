@@ -1,9 +1,9 @@
 {
-    "name" : "system_lib_mongoDB",
+    "name" : "system_lib_mongoDb",
     "description" : "MongoDB wrapper",
     "package" : {
         "path" : "/system/lib/",
-        "init" : "mongoDB.php",
+        "init" : "mongoDb.php",
         "version" : "0.1a"
     },
     "meta" : {

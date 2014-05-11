@@ -9,7 +9,6 @@ use sys\pkg\config;
 
 abstract class controller
 {
-    protected $baseClass;
 
     abstract function index();
 
@@ -29,6 +28,22 @@ abstract class controller
         return false;
     }
 
+    protected function model()
+    {
+        $modelClass = $this->getModelName(get_called_class());
+        static $models;
+        if(!isset($models[$modelClass])) {
+            $models[$modelClass] = (new $modelClass);
+        }
+
+        return $models[$modelClass];
+    }
+
+    private function getModelName($controllerClass)
+    {
+        return lcfirst($controllerClass) . 'Model';
+    }
+
     /**
      *  Function return templateParser instance
      *
@@ -36,7 +51,6 @@ abstract class controller
      */
     protected function view()
     {
-        $this->baseClass = get_called_class();
         static $templateParser;
         if(!isset($parser)) {
             $templateParser = new templateParser();
@@ -78,5 +92,10 @@ abstract class controller
         $this->get404page();
 
         return false;
+    }
+
+    protected static function clearInputData($data)
+    {
+        return htmlspecialchars(stripcslashes(trim($data)));
     }
 }

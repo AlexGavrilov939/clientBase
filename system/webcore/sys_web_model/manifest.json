@@ -1,0 +1,16 @@
+{
+    "name" : "sys_web_model",
+    "description" : "base model",
+    "package" : {
+        "path" : "/sys/web/",
+        "init" : "model.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "input"
+    },
+    "depends" : [
+
+    ]
+}

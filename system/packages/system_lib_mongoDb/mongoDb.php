@@ -44,7 +44,7 @@ class mongoDb
     /**
      * Construct new object
      */
-    public function __construct($configName)
+    public function __construct($configName = 'local')
     {
         $packageConfig = config::getPackageConfig(__CLASS__);
         if(!isset($packageConfig[$configName])) {

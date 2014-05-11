@@ -1,0 +1,16 @@
+{
+    "name" : "loginModel",
+    "description" : "login mvc model",
+    "package" : {
+        "path" : "/loginModel/",
+        "init" : "loginModel.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "login, model"
+    },
+    "depends" : [
+
+    ]
+}
