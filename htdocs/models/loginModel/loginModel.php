@@ -44,13 +44,31 @@ class loginModel
 
     }
 
-    public function checkUserSessionByHash($hash)
+    public function checkUserByHash($hash)
     {
+        $test = $this->db->selectOne($this->config['usersSection'], ['userId' => $hash]);
         if(!is_null($this->db->selectOne($this->config['usersSection'], ['userId' => $hash]))) {
             return true;
         }
         return false;
     }
+
+    public function getClientBases()
+    {
+       return $this->db->getCollectionNames(['users']);
+    }
+
+    public function createCollection($collectionName)
+    {
+        $this->db->createCollection($collectionName);
+    }
+
+    public function removeCollection($collectionName)
+    {
+        $this->db->removeCollection($collectionName);
+    }
+
+
 
 
 }

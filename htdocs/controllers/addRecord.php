@@ -1,7 +1,5 @@
 <?php
-use sys\pkg\config;
 use sys\web\controller;
-use system\lib\excel;
 
 /**
  * Created by Alex Gavrilov.
@@ -14,14 +12,8 @@ class addRecord
 
     public function index()
     {
-        $data['content'] = $this->parser()->loadView('addRecord');
-        $this->parser()->parse('template', $data);
-    }
-
-    public function test()
-    {
-        $data['content'] = $this->parser()->loadView('addRecord');
-        $this->parser()->parse('template', $data);
+        $data['content'] = $this->view()->generate('addRecord', [], false);
+        $this->view()->generate('template', $data);
     }
 
     public function ajax()

@@ -35,17 +35,22 @@
                 e.preventDefault();
                 var data = $(this).serialize();
                 var url = $(this).attr('action');
-                $.post( url, data, function( data ) {
-                    console.log(data);
-                    if(data == true) {
-                        $.post('/login/checkAuth', function(data) {
-                            $(".loginArea").html(data);
-                        });
+
+                $.post( url, data, function( responseMsg ) {
+
+                    if( responseMsg == 'ok') {
+                        getDbSelectForm();
                     } else {
-                        alert('Проверьте введенные данные и попробуйте еще раз!');
+                        alert('Проверьте введенные данные!');
                     }
                 });
-            })
+            });
+
+            function getDbSelectForm() {
+                $.post('/login/dbSelect', function success(data) {
+                    $("#formWrapper").html(data);
+                })
+            }
         });
     </script>
     </body>

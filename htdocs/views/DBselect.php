@@ -35,7 +35,7 @@
                 console.log('false');
                 return false;
             }
-            $.post('/login/dbCreate', {name : input}, function() {
+            $.post('/login/createDb', {name : input}, function() {
                 console.log('db created!');
             });
             $(".DbList").append(
@@ -51,7 +51,7 @@
         var dbName = li.find('b.name').text();
         if (confirm("Вы точно хотите удалить базу с именем \"" + dbName + '\" ?')) {
             li.remove();
-            $.post('/login/dbRemove', {name : dbName}, function() {
+            $.post('/login/removeDb', {name : dbName}, function() {
                 console.log('success');
             });
         }
@@ -60,9 +60,9 @@
         if(currentDbName == undefined) {
             alert('Чтобы продолжить работу необходимо выбрать существующую базу, либо создать новую!');
         } else {
-            $.post('/login/saveDbName', {name : currentDbName}, function() {
-                console.log('name of the database is successfully stored in cookies');
+            $.post('/login/saveDefaultDb', {defaultDb : currentDbName}, function() {
                 window.location.href = '/main';
+                console.log('name of the database is successfully stored in cookies');
             });
         }
     });

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <div class="data-section-outer">
     <div class="data-section-inner">
             <div class="customer-info">
@@ -188,4 +186,3 @@
 
 <!-- Our main JS file -->
 <script src="../assets/js/upload.js"></script>
->>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc

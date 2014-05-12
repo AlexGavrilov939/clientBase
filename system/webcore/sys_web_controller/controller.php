@@ -15,14 +15,23 @@ abstract class controller
     public function __construct()
     {
         header('Content-Type: text/html; charset=utf-8');
-//        if(!$this->loggedIn() && $_SERVER['REQUEST_URI'] != '/login' && $_SERVER['REQUEST_URI'] != '/login/signin') {
-//            header('Location: /login');
-//        }
+        if(!$this->loggedIn() && $_SERVER['REQUEST_URI'] != '/login' &&
+        $_SERVER['REQUEST_URI'] != '/login/dbSelect' && $_SERVER['REQUEST_URI'] != '/login/signin') {
+            header("Location: /login");
+        }
+    }
+
+    protected function checkUserByCookie()
+    {
+        if(!isset($_COOKIE['userId']) && $_SERVER['REQUEST_URI'] != '/login' &&
+        $_SERVER['REQUEST'] != '/login/dbSelect') {
+            header("Location: /login");
+        }
     }
 
     protected  function loggedIn()
     {
-        if($_COOKIE['PHPSESSID']) {
+        if($_COOKIE['userId']) {
             return true;
         }
         return false;
