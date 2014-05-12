@@ -16,9 +16,10 @@ class addRecord
         $this->view()->generate('template', $data);
     }
 
-    public function ajax()
+    public function addTmpImage()
     {
-            if($this->checkAjaxRequest()) {
+        $this->model()->test();
+            if($this->isAjaxRequest()) {
                 $allowed = ['png', 'jpg', 'gif','zip'];
 
                 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
@@ -37,8 +38,6 @@ class addRecord
                 echo '{"status":"error"}';
                 exit;
 
-            } else {
-                $this->get404();
             }
     }
 
@@ -51,7 +50,7 @@ class addRecord
 
     public function ajaxSaveOrder()
     {
-        if($this->checkAjaxRequest()) {
+        if($this->isAjaxRequest()) {
             self::saveOrder($_POST);
             $this->clearTmpFolder(self::UPLOAD__PATH);
             echo 'success!';

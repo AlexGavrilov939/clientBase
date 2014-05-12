@@ -135,6 +135,11 @@
     cursor:pointer;
 }
 
+.upload ul li span:hover {
+    background: url('../img/delete.png') center center no-repeat;
+    background-size: contain;
+}
+
 .upload ul li.working span{
     height: 16px;
     background-position: 0 -12px;
@@ -258,15 +263,9 @@ footer h2 i{
     width: 160px;
     height: 140px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 span.status:hover {
     background: url("../img/icons.png") no-repeat scroll 2px -13px;
 }
->>>>>>> frontend
-=======
 span.status:hover {
     background: url("../img/icons.png") no-repeat scroll 2px -13px;
 }
->>>>>>> 0395e1131f78b5cea73bd6bdaf5dadc2c0b5bacc

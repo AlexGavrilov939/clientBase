@@ -12,7 +12,10 @@
         <div class="header">
             <ul class="header-control">
                 <li class="exit">
-                    <a href="/logout">fasf</a>
+                    <a href="/main/logout">
+                        <span>Выход</span>
+                        <img src="../assets/img/exit.png"/>
+                    </a>
                 </li>
             </ul>
         </div>

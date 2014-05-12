@@ -1,0 +1,16 @@
+{
+    "name" : "addRecordModel",
+    "description" : "addRecord mvc model",
+    "package" : {
+        "path" : "/addRecordsModel/",
+        "init" : "addRecordModel.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "addRecord, model"
+    },
+    "depends" : [
+
+    ]
+}

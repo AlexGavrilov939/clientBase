@@ -15,7 +15,7 @@
                         <div class="add-address">
                             <img  src="../assets/img/address.png"/>
                             <button class="button address" data-id="address-area">Добавить адрес</button>
-                        </div>
+                       </div>
                         <textarea id="address-area">dasdas</textarea>
                     </div>
                     <div class="info-item">
@@ -50,7 +50,7 @@
                         <div title="Удалить карточку" class="delete-item">&#10006;</div>
 
                         <div class="media">
-                            <form class="upload" method="post" action="addRecord/ajax" enctype="multipart/form-data">
+                            <form class="upload" method="post" action="addRecord/addTmpImage" enctype="multipart/form-data">
                                 <div class="drop">
                                     Drop Here
                                     <a>Browse</a>
@@ -82,6 +82,12 @@
                         <div class="desc">
                             <label for="item-description-area">Оставить комментарий:</label>
                             <textarea class="item-description-area" name="item-description-area"></textarea>
+                            <ul class="clip-area">
+                                <li>
+                                    <a><img title="Прикрепить изображение" src="../assets/img/clip.png"/></a>
+                                </li>
+
+                            </ul>
                         </div>
                     </div>
                     <span id="add-shipment-item">Добавить наименование</span>
@@ -173,6 +179,7 @@
     $(document).on('click', ".status", function() {
         var form = $(this).parents('.upload');
         form.find('.blockedImage').hide();
+        form.find('.blockedImage').empty();
         form.find('.drop').show();
     });
 </script>
