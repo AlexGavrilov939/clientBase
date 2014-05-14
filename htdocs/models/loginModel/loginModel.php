@@ -9,11 +9,6 @@ class loginModel
     extends model
 {
 
-    public function test()
-    {
-        echo 'i am test model!';
-    }
-
     public static function factory()
     {
         static $modelInstance;

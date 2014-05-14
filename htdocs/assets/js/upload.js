@@ -1,32 +1,66 @@
 $(function(){
 
-    var uploadForm;
+    var mainUpload;
     var ul;
     $(document).on('click', ".drop a", function() {
           ul = $(this).parent().parent().find('ul');
-          uploadForm = $(this).parent().parent();
+          mainUpload = $(this).parent().parent();
           $(this).parent().find('input').click();
-          var test = fileupload(uploadForm);
-          console.log(test);
+          fileupload(mainUpload);
       });
+
+    var clipUpload;
+    var ulClip;
+    $(document).on('click', "li.clip-item", function(event) {
+        ulClip = $(this).parent();
+        clipUpload = ulClip.parent();
+
+        var input  = $(this).find('input.clip-input');
+        if (!$(event.target).is(input)) {
+            input.trigger('click');
+            appendEmptyLi();
+        }
+        fileupload(clipUpload);
+
+
+        function appendEmptyLi()
+        {
+            var currentLi = ulClip.find('.blockedImage').last();
+            if(currentLi.hasClass('clip-item') || !currentLi.is(':empty')) {
+                ulClip.append(
+                    '<li >' +
+                        '<div class="delete-item">&#10006;</div>' +
+                        '<div class="blockedImage"></div>' +
+                    '</li>'
+                );
+            } else {
+                console.log(currentLi);
+            }
+
+        }
+
+    });
 
     function appendImage(fileName, obj)
     {
         var filePath = '../../uploads/tmp/' + fileName;
-        var blockedImage = obj.find('.blockedImage');
-        var img ='<img src="' + filePath + '"/>';
+        var blockedImage = obj.find('.blockedImage').last();
+        var img ='<img class="tmpImage" src="' + filePath + '"/>';
         blockedImage.append(img);
         blockedImage.show();
     }
 
-    function fileupload(uploadForm)
+    function fileupload(workingForm)
     {
-        $(uploadForm).fileupload({
+        $(workingForm).fileupload({
             // This element will accept file drag/drop uploading
             // This function is called when a file is added to the queue;
             // either via the browse button, or via drag/drop:
 
             add: function (e, data) {
+            if(workingForm.hasClass('upload')) {
+
+
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
             ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span class="status"></span></li>');
 
@@ -59,8 +93,9 @@ $(function(){
             var jqXHR = data.submit();
 
             $(this).find('.drop').hide();
-
+            }
             appendImage(data.files[0].name, $(this));
+
             },
 
             progress: function(e, data){

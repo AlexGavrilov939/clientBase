@@ -21,7 +21,7 @@
         </div>
         <div class="main-wrapper">
             <div class="navigation">
-                <a href="/main" class="item"><img src="../assets/img/dashboard.png"/>клиенты</a>
+                <a href="/main" class="item"><img src="../assets/img/dashboard.png"/>Все заказы</a>
                 <a href="/addRecord" class="item add-record"><img src="../assets/img/addRecord.png"/>Добавить заказ</a>
                 <a href="/export" class="item excel"><img src="../assets/img/excel.png"/>импорт / экспорт</a>
             </div>

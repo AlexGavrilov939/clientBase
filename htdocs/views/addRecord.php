@@ -52,7 +52,7 @@
                         <div class="media">
                             <form class="upload" method="post" action="addRecord/addTmpImage" enctype="multipart/form-data">
                                 <div class="drop">
-                                    Drop Here
+                                    Image Here
                                     <a>Browse</a>
                                     <input type="file" name="upl" multiple />
                                 </div>
@@ -82,12 +82,16 @@
                         <div class="desc">
                             <label for="item-description-area">Оставить комментарий:</label>
                             <textarea class="item-description-area" name="item-description-area"></textarea>
-                            <ul class="clip-area">
-                                <li>
-                                    <a><img title="Прикрепить изображение" src="../assets/img/clip.png"/></a>
-                                </li>
+                            <form class="upload-clip" enctype="multipart/form-data" action="addRecord/addTmpImage" method="post">
+                                <ul class="clip-area">
+                                    <li class="clip-item">
+                                        <img class="drop-clip" title="Прикрепить изображение" src="../assets/img/clip.png"/>
+                                        <input class="clip-input" type="file" multiple="" name="upl">
+                                        <span>Прикрепить изображение</span>
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                     <span id="add-shipment-item">Добавить наименование</span>
@@ -123,41 +127,56 @@
                     address     : $('#address-area').val(),
                     description : $('#description-area').val(),
                     trackNumber : $('#track-number-area').val()
-                }
-//                orderInfo : getOrders()
+                },
+                ordersInfo : getOrders()
             };
-            console.log(data);
-            $.post( "addRecord/ajaxSaveOrder",JSON.stringify(data), function( data ) {
+
+            function getOrders()
+            {
+                var data = [];
+
+                $('.shipment-item').each(function(i, obj) {
+                    var mainImageObj = $(this).find('.upload');
+                    var descriptionObj = $(this).find('.upload-clip');
+                    var order = {
+                        name             : $(this).find('input.title').val(),
+                        article          : $(this).find('input.article').val(),
+                        price            : $(this).find('input.price').val(),
+                        delivery         : $(this).find('input.delivery').val(),
+                        description      : $(this).find('textarea.item-description-area').val(),
+                        mainImage        : getImgName(mainImageObj),
+                        descriptionImage : getImgName(descriptionObj)
+                    };
+                    data.push(order);
+                });
+
+                return data;
+            }
+
+            function getImgName(obj)
+            {
+                var images = [];
+                $.each(obj.find('img.tmpImage'), function(key, value) {
+                    images.push((($(this).attr('src').split('/').pop())));
+                });
+
+                if(images.length == 1) {
+
+                    return images[0];
+                }
+
+                return images;
+            }
+
+            $.post( "addRecord/processingOrderPost",data, function( data ) {
 //                console.log(data);
 //                window.location.href = "addRecord/success";
             });
         });
 
-        function getOrders()
-        {
-            var data = [];
-            $('.shipment-item').each(function(i, obj) {
-                data[i] = {
-                    name        : $(this).find('input.title').val(),
-                    article     : $(this).find('input.article').val(),
-                    price       : $(this).find('input.price').val(),
-                    delivery    : $(this).find('input.delivery').val(),
-                    description : $(this).find('textarea.item-description-area').val(),
-                    imgPath     : getImgName($(this))
-                };
-            });
 
-            function getImgName(obj)
-            {
-                var img = obj.find('img.tempImage');
-                if($(img).length) {
-                    return img.attr('src').split('/').pop();
-                }
-                return "";
-            }
 
-            return JSON.stringify(data);
-        }
+
     });
 
     $(document).on('click', ".delete-item", function() {
@@ -181,6 +200,11 @@
         form.find('.blockedImage').hide();
         form.find('.blockedImage').empty();
         form.find('.drop').show();
+    });
+</script>
+<script>
+    $(document).on('focus', "li.blockedImage", function() {
+        console.log('image');
     });
 </script>
 <!-- JavaScript Includes -->
