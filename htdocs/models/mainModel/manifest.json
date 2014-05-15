@@ -1,0 +1,16 @@
+{
+    "name" : "mainModel",
+    "description" : "main mvc model",
+    "package" : {
+        "path" : "/mainModel/",
+        "init" : "mainModel.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "login, model"
+    },
+    "depends" : [
+
+    ]
+}

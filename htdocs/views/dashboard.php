@@ -5,12 +5,8 @@
 </div>
 <div class="data-section-outer">
     <div class="data-section-inner">
-        <table>
-            <tr>
-                <td>
-                    <?php var_dump($data[0])?>
-                </td>
-            </tr>
-        </table>
+        <ul class="orders-list">
+
+        </ul>
     </div>
 </div>

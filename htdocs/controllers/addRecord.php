@@ -50,19 +50,8 @@ class addRecord
     public function processingOrderPost()
     {
         if($this->isAjaxRequest()) {
-
-            $clientInfo = $_POST['clientInfo'];
-            $ordersInfo = $_POST['ordersInfo'];
-
-            $this->model()->processingClient($clientInfo);
-
-            foreach($ordersInfo as $order) {
-                if(array_filter($order)) {
-
-                }
-                $this->model()->processingOrder($order);
-            }
-
+            $data = $_POST;
+            $this->model()->save('bid',$data);
         }
 
     }

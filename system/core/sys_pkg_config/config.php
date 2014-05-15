@@ -27,6 +27,12 @@ abstract class config
         return str_replace('\\', '_', $class);
     }
 
+    public static function getClassName($packageName)
+    {
+        var_dump("package name is: {$packageName}", __METHOD__);
+        return "\\" . str_replace("_", "\\", $packageName);
+    }
+
     protected static function init($config)
     {
         var_dump("init!");

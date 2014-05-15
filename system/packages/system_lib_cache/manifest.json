@@ -1,0 +1,16 @@
+{
+    "name" : "system_lib_cache",
+    "description" : "basic cache processor",
+    "package" : {
+        "path" : "/system/lib/",
+        "init" : "cache.php",
+        "version" : "0.1a"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "cache"
+    },
+    "depends" : [
+
+    ]
+}

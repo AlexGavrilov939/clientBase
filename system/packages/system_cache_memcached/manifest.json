@@ -1,0 +1,17 @@
+{
+    "name" : "system_cache_memcached",
+    "description" : "Memcached driver wrapper for system_lib_cache",
+    "package" : {
+        "path" : "/system/cache/",
+        "init" : "memcached.php",
+        "version" : "1.0"
+    },
+    "meta" : {
+        "type" : "lib",
+        "tags" : "cache, memcache, memcached"
+    },
+    "depends" : [
+        "system_lib_cache",
+        "system_lib_config"
+    ]
+}

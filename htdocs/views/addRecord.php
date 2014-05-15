@@ -126,9 +126,13 @@
                     phone       : $('#phone').val(),
                     address     : $('#address-area').val(),
                     description : $('#description-area').val(),
-                    trackNumber : $('#track-number-area').val()
                 },
-                ordersInfo : getOrders()
+                orderInfo : {
+                    postData : {
+                        'trackNumber' : $('#track-number-area').val()
+                    },
+                    orders : getOrders()
+                }
             };
 
             function getOrders()

@@ -4,5 +4,7 @@
  */
 
 \sys\pkg\config::$package['sys_web_model'] = [
-    'usersSection' => 'users'
+    'usersSection'   => 'users',
+    'clientsSection' => 'clients',
+    'ordersSection'  => 'orders'
 ];
